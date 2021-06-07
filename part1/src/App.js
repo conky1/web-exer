@@ -42,12 +42,12 @@ const Statistics = (props) => {
   }
   return (
      <div>
-      <Stat name = "good" value = {props.good}/>
-      <Stat name = "neutral" value = {props.neutral} />
-      <Stat name = "bad" value = {props.bad}/>
-      <Stat name = "total" value = {props.total} />
-      <Stat name = "average" value = {props.average} />
-      <Stat name = "positive" value = {props.positive} percentage = "%" />
+      <Stat name = "Good" value = {props.good}/>
+      <Stat name = "Neutral" value = {props.neutral} />
+      <Stat name = "Bad" value = {props.bad}/>
+      <Stat name = "Total" value = {props.total} />
+      <Stat name = "Average" value = {props.average} />
+      <Stat name = "Positive" value = {props.positive} percentage = "%" />
      </div> 
   )
 }
