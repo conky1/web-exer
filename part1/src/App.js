@@ -1,68 +1,64 @@
-import React, { useState } from 'react'
-const Button = (props) => (
-  <button onClick={props.handleClick}>
-    {props.text}
-  </button>
-)
+import React from 'react'
 
-const Label = ({selected,votes}) => {
+import Course from './components' 
+
+  
+
+  const App = () => {
+    const courses = [
+      {
+        name: 'Half Stack application development',
+        id: 1,
+        parts: [
+          {
+            name: 'Fundamentals of React',
+            exercises: 10,
+            id: 1
+          },
+          {
+            name: 'Using props to pass data',
+            exercises: 7,
+            id: 2
+          },
+          {
+            name: 'State of a component',
+            exercises: 14,
+            id: 3
+          },
+          {
+            name: 'Redux',
+            exercises: 11,
+            id: 4
+          }
+        ]
+      }, 
+      {
+        name: 'Node.js',
+        id: 2,
+        parts: [
+          {
+            name: 'Routing',
+            exercises: 3,
+            id: 1
+          },
+          {
+            name: 'Middlewares',
+            exercises: 7,
+            id: 2
+          }
+        ]
+      }
+    ]
+
   return (
-      <>
-      <div>{anecdotes[selected]}</div>
-      <div>Has {votes[selected]} votes</div>
-      </>
-  )
-}
-
-
-const statistics = (votes, dataArray) => {
-  let i = votes.indexOf(Math.max(...votes))
-  return (
-      <div>
-      <h1>Anecdote with most votes</h1>
-      <div>{dataArray[i]}</div>
-      <div>Has {votes[i]} votes</div>
+    <div>
+      {courses.map(course=>
+       <Course key={course.id} course={course}/>
+      )}
       </div>
   )
 }
 
-const App = (props) => {
-
-const dataLenght = props.anecdotes
-
-const [selected, setSelected] = useState(0)
-const [votes, setVote] = useState(Array(dataLenght).fill(0))
 
 
-const setRandom = (anecdotes) => {
-  setSelected(Math.floor(Math.random() * anecdotes))
-}
-
-const giveVote = (selected) => {
-  const copy = [...votes]
-  copy[selected] += 1
-  setVote(copy)
-}
-
-return (
-  <div>
-    <Label selected={selected} votes={votes}/>
-    <p>
-    <Button handleClick={() => giveVote(selected)} text="Vote" />
-    <Button handleClick={() => setRandom(anecdotes)} text="Next anecdote" />
-    </p>
-    <div>{statistics(votes, props.anecdotes)}</div>
-  </div>
-)
-}
-
-const anecdotes = [
-'If it hurts, do it more often',
-'Adding manpower to a late software project makes it later!',
-'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
-'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
-'Premature optimization is the root of all evil.',
-'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
-]
-
-export default App
+export default App  
